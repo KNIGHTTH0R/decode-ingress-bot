@@ -1,4 +1,5 @@
-python-telegram-bot==5.0.0
+python-telegram-bot==5.1
 git+https://github.com/ninniuz/pycipher.git
 roman
 Pillow
+ujson
