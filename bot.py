@@ -35,7 +35,7 @@ class DecodeCommandHandler(Handler):
                 update.message.text.startswith('/'))
 
     def handle_update(self, update, dispatcher):
-        optional_args = self.collectOptionalArgs(dispatcher)
+        optional_args = self.collect_optional_args(dispatcher)
         optional_args['args'] = update.message.text.split(' ')[1:]
         optional_args['command'] = update.message.text[1:].split(' ')[0].split('@')[0]
         if update.message.chat_id in dispatcher.bot.sessions:
