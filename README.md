@@ -16,3 +16,5 @@ $ source py3env/bin/activate
 ```
 (py3env)$ python bot.py
 ```
+
+**Note: currently the bot supports only poll mode**
