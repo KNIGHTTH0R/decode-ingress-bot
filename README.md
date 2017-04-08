@@ -11,6 +11,8 @@ $ source py3env/bin/activate
 ```
 (py3env)$ pip install -r requirements.txt
 ```
+**If you get errors about missing `Python.h` file then you need to install python3-dev libraries**
+
 - Create a `secrets.py` file and add a `TG_BOT_TOKEN` variable to store your Telegram Bot token as obtained by @BotFather
 - Launch your bot by running
 ```
