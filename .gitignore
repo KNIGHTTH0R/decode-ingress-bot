@@ -2,3 +2,4 @@
 __pycache__
 py3env
 secrets.py
+*.pyc
