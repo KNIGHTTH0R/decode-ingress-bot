@@ -307,14 +307,15 @@ def replace_c(code, c, r):
 def check(code):
     """Check valid passcode"""
     if type(code) is str:
+        # New format: xxx##keyword###xx
         # split code
         c = code.lower()
         l = len(c)
         prefix = c[0:5]
         kwd = c[5:l-5]
         suffix = c[5 + len(kwd):]
-        prefix_re = r"[2-9][a-z]{3}[2-9]"
-        suffix_re = r"[a-z][2-9][a-z][2-9][a-z]"
+        prefix_re = r"[a-z]{3}[2-9]{2}"
+        suffix_re = r"[2-9]{3}[a-z]{2}"
         return "Valid passcode" if \
             re.match(prefix_re, prefix) is not None and re.match(suffix_re, suffix) is not None and kwd in keywords \
             else "Not a valid passcode"
