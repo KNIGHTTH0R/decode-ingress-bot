@@ -12,9 +12,9 @@ def atbash_c(c):
         return c
 
 
-def atbash_n(n):
-    if '1' <= n <= '9':
-        limits = (ord('1'), ord('9'))
+def atbash_n(n, lower='1'):
+    if lower <= n <= '9':
+        limits = (ord(lower), ord('9'))
         return chr(limits[1] - ((ord(n) + (limits[1] - limits[0])) % limits[1]))
     else:
         return n
@@ -32,6 +32,12 @@ def atbash_num(s):
     return atbash_main(s, numeric=True)
 
 
+@command("atbashnumz")
+def atbash_numz(s):
+    """Encode letters and numbers (incl. zero)"""
+    return atbash_main(s, numeric=True, zero=True)
+
+
 hex_alphabet = '0123456789ABCDEF'
 atbashhex = dict([(v, hex_alphabet[-1 * (k + 1)]) for k, v in enumerate(list(hex_alphabet))])
 
@@ -44,13 +50,14 @@ def atbash_hex(s):
     return ''.join([atbashhex[c.upper()] for c in s])
 
 
-def atbash_main(s, numeric=False):
+def atbash_main(s, numeric=False, zero=False):
     result = ""
+    lower = '0' if zero else '1'
     for c in s:
         if c.isalpha():
             result += atbash_c(c)
         elif c.isnumeric():
-            result += atbash_n(c) if numeric else c
+            result += atbash_n(c, lower) if numeric else c
         else:
             result += c
     return result
